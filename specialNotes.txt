@@ -1,0 +1,14 @@
+These are the notes which I made while building this project to understand the concepts used in this project better and to remember it for all my next projects.
+
+1.) while encrypting plain text to encrypted text, we need to convert the regular string("string") to binary literal first(b"string"), and then only we can use encrypt function of fernet to encrypt that binary literal.
+    regular string is just a sequence of characters. b prefix indicates that the string is represented as a sequence of bytes rather than a sequence of characters.
+2.) also when we decrypt encrypted text, we dont get the regular literal or string directly. we get a binary literal upon using decrypt method of fernet which looks something like this-->b"this is a string".
+    This string is not equal to regular string "this is a string" and needs to be converted to regular string.
+3.) to convert regular string to binary literal before using encrypt method of fernet in python, we use rstring.encode()
+    -->binLitStr=regStr.encode()
+    
+also to convert binary literal to regular string we use         binLitStr.decode()
+    regStr=binLitStr.decode()
+
+4.) ALL THE CHANGES NEEDED TO BE MADE FOR LINUX VERSION
+    a.) for linux version, change cls to clear in main.py. because to clear terminal, cls used in windows and clear used in unix/linux
