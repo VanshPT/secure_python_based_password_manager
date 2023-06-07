@@ -2,7 +2,23 @@ import os
 from cryptography.fernet import Fernet
 import subprocess
 
-class General:
+class Security:
+    def primary_security(self):
+        dpass1=input("Enter the password to proceed: ")
+        with open(os.path.join(self.k, "pass.key"), "rb") as key_file:
+            pkey=key_file.read()
+
+        with open("password.txt", "r") as pass_file:
+                epass=pass_file.read()
+        fernet=Fernet(pkey)
+        dpass=fernet.decrypt(epass)
+        if(dpass1==dpass.decode()):
+            return 1
+        else:
+            return 0
+        
+
+class General(Security):
     def __init__(self, k, c):
         self.k = k
         self.c = c
@@ -33,7 +49,7 @@ class General:
         # dpas=fernet.decrypt(password)
         # print(dpas.decode())
 
-
+    
 
     def new_credentials(self):
         # the below 6 lines will clear the terminal for a fresh look while working.
@@ -44,8 +60,18 @@ class General:
         # Execute the clear command
         subprocess.call(clear_command, shell=True)
 
+        result=super().primary_security()
 
-        pass#write code for accepting new credentials from user and storing it in credentials directory in encrypted format.
+        if(result==1):
+            dkey=input("Enter the key with which you can search your credentials: ")
+            print("\nENTER YOUR CREDENTIALS RESPECTIVE TO KEY BELOW\n")
+            dmail=input("Enter Email Id: ")
+            dpasswd=input("Enter Password: ")
+        if(result==0):
+            print("\n!!!!!Sorry Wrong Password!!!!!\n\n")
+            pass
+
+
 
     def get_credentials(self):
         # the below 6 lines will clear the terminal for a fresh look while working.
@@ -56,8 +82,13 @@ class General:
         # Execute the clear command
         subprocess.call(clear_command, shell=True)
 
+        result=super().primary_security()
+        if(result==1):
+            pass#write code displaying required credentials asked by the user into plain text.
 
-        pass#write code displaying required credentials asked by the user into plain text.
+        if(result==0):
+            print("\n!!!!!Sorry Wrong Password!!!!!\n\n")
+            pass
 
     def change_password(self):
         # the below 6 lines will clear the terminal for a fresh look while working.
@@ -68,9 +99,13 @@ class General:
         # Execute the clear command
         subprocess.call(clear_command, shell=True)
 
+        result=super().primary_security()
+        if(result==1):
+            pass#write code for changing the main password.            
 
-        pass#write code for changing the main password.
-
+        if(result==0):
+            print("\n!!!!!Sorry Wrong Password!!!!!\n\n")
+            pass
 
 
 

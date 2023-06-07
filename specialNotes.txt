@@ -12,3 +12,35 @@ also to convert binary literal to regular string we use         binLitStr.decode
 
 4.) ALL THE CHANGES NEEDED TO BE MADE FOR LINUX VERSION
     a.) for linux version, change cls to clear in main.py. because to clear terminal, cls used in windows and clear used in unix/linux
+
+5.) In General class, I was not able to call a method inside another method within same class. So I created a new parent class and put the method which we want to call in another method inside that parent class.
+    then we inherit the parent class to child class and now we can call the method which we shifted to parent class inside of methods in child class using super().
+
+    ex- class Child:
+            def func1(self):
+                pass
+            def func2(self):
+                pass
+            def func3(self):
+                func1()-->(here we cant call this as func3 and func1    is same class. so shifting func1 in a parent class to make it callable inside func3 using super())
+
+
+    ex- class Parent:
+            def func1(self):
+                pass
+
+        class Child(Parent):
+            def func2(self):
+                pass
+            def func3(self):
+                super().func1()
+
+    We have applied this principle by moving primary_security funciton to another parent class called Security instead of keeping it in General class as it can now be called using super method in all the other methods of General class and also can be called individually.
+
+
+
+
+
+
+THINGS WHICH CAN BE ADDED FURTHER INTO PROJECT:
+a.) maximum wrong password attempts allowed=3 to prevent brute force attack.
