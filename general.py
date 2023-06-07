@@ -67,6 +67,16 @@ class General(Security):
             print("\nENTER YOUR CREDENTIALS RESPECTIVE TO KEY BELOW\n")
             dmail=input("Enter Email Id: ")
             dpasswd=input("Enter Password: ")
+            key=Fernet.generate_key()
+            fernet=Fernet(key)
+            dcred=dkey+"\n\n"+"Email: "+dmail+"\n"+"Password: "+dpasswd
+            ecred=fernet.encrypt(dcred.encode())
+
+            with open(os.path.join(self.k,f"{dkey}.key"),"wb") as key_file:
+                key_file.write(key)
+            with open(os.path.join(self.c,f"{dkey}.txt"),"wb") as cred_file:
+                cred_file.write(ecred)
+
         if(result==0):
             print("\n!!!!!Sorry Wrong Password!!!!!\n\n")
             pass
