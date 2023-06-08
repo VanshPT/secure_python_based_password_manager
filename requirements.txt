@@ -1,0 +1,4 @@
+# requirements.txt
+
+# Cryptography module
+cryptography==3.4.8
