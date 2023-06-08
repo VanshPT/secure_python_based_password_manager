@@ -1,3 +1,9 @@
+THINGS WHICH CAN BE ADDED FURTHER INTO PROJECT(Add your contribution to this list after analysig full project):
+a.) maximum wrong password attempts allowed=3 to prevent brute force attack.
+b.) Automatic deletion of a particular credential file.
+c.) check if email and password stored should be of valid syntax.
+
+
 These are the notes which I made while building this project to understand the concepts used in this project better and to remember it for all my next projects.
 
 1.) while encrypting plain text to encrypted text, we need to convert the regular string("string") to binary literal first(b"string"), and then only we can use encrypt function of fernet to encrypt that binary literal.
@@ -13,7 +19,7 @@ also to convert binary literal to regular string we use         binLitStr.decode
 4.) ALL THE CHANGES NEEDED TO BE MADE FOR LINUX VERSION
     a.) for linux version, change cls to clear in main.py. because to clear terminal, cls used in windows and clear used in unix/linux
 
-5.) In General class, I was not able to call a method inside another method within same class. So I created a new parent class and put the method which we want to call in another method inside that parent class.
+5.) I Wanted to apply as many concept of OOPS as possible in this project, so instead of directly calling a funciton inside another function where both functions belong to same class,  I created a new parent class and put the method which we want to call in another method inside that parent class.
     then we inherit the parent class to child class and now we can call the method which we shifted to parent class inside of methods in child class using super().
 
     ex- class Child:
@@ -42,5 +48,3 @@ also to convert binary literal to regular string we use         binLitStr.decode
 
 
 
-THINGS WHICH CAN BE ADDED FURTHER INTO PROJECT:
-a.) maximum wrong password attempts allowed=3 to prevent brute force attack.
