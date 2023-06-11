@@ -20,7 +20,7 @@ clear_command = "cls"  # for Windows
 subprocess.call(clear_command, shell=True)
 
 while(True):
-    ch=int(input("Enter your choice(0-4)\n0<--Exit\n1<-- Enter new credentials\n2<-- Get credentials\n3<-- Change Password\n4<-- Delete Credentials\n-->"))
+    ch=int(input("Enter your choice(0-4)\n0<--Exit\n1<-- Enter new credentials\n2<-- Get credentials\n3<-- Change Password\n4<-- Delete Credentials\n5<-- View All Keys\n-->"))
     if(ch==0):
         print("Thank you for using the secure password manager. Be Secure Be Happy :)")
         break
@@ -37,6 +37,11 @@ while(True):
         case 4:
             subprocess.call("cls",shell=True)
             print("INSTRUCTION: Delete the file named (your_credentials_key).key from folder KEYS and delete the file named (your_credentials_key).txt from the folder CREDENTIALS.\n\n+++ Total files deleted = 2 +++ \n")
+        case 5:
+            subprocess.call("cls",shell=True)
+            for file in os.listdir("CREDENTIALS"):
+                print(file.split(".")[0])
+            print("\n")
         case _:
             print("Enter a valid Choice!!!\n")
             
